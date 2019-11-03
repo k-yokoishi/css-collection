@@ -28,8 +28,8 @@ export default class Loader extends Vue {}
 
 .bouncing-loader > div {
   background-color: dodgerblue;
-  width: 1rem;
   height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   margin: 3rem 0.2rem;
   animation: bouncing-loader 0.6s infinite alternate;
