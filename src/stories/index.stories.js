@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
 
 import MyButton from '../components/MyButton.vue'
+import BouncingLoader from '../components/BouncingLoader'
 
 storiesOf('Button', module)
   .add('with text', () => ({
@@ -23,3 +24,8 @@ storiesOf('Button', module)
     template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
     methods: { action: action('clicked') }
   }))
+
+storiesOf('Loader', module).add('Bouncing', () => ({
+  components: { BouncingLoader },
+  template: '<bouncing-loader></bouncing-loader>'
+}))
