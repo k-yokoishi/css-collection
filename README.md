@@ -25,5 +25,15 @@ yarn run test
 yarn run lint
 ```
 
+### Build Storybook
+```
+yarn run storybook:build
+```
+
+### Run Storybook
+```
+yarn run storybook:serve
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
