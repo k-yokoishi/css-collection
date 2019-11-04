@@ -6,6 +6,7 @@ import { linkTo } from '@storybook/addon-links'
 import MyButton from '../components/MyButton.vue'
 import BouncingLoader from '../components/BouncingLoader'
 import CircleSpinner from '../components/CircleSpinner'
+import Toaster from '../components/Toaster'
 
 storiesOf('Loader', module)
   .add('Bouncing', () => ({
@@ -16,6 +17,27 @@ storiesOf('Loader', module)
     components: { CircleSpinner },
     template: '<circle-spinner></circle-spinner>'
   }))
+
+storiesOf('Toaster', module).add('appear on event', () => ({
+  components: { Toaster },
+  data() {
+    return {
+      toasted: false
+    }
+  },
+  methods: {
+    toggleToast() {
+      console.log({ 'before toasted': this.toasted })
+      this.toasted = !this.toasted
+    }
+  },
+  template: `
+  <div>
+    <button @click="toggleToast">Show toast</button>
+    <toaster :show="toasted"></toaster>
+  </div>
+  `
+}))
 
 storiesOf('Button', module)
   .add('with text', () => ({
