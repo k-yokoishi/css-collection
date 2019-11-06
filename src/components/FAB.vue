@@ -26,18 +26,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import VueCore from "vue";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import VueCore from 'vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faPlus,
   faPaw,
   faCoffee,
   faFeather,
   faHippo,
-  faOtter
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+  faOtter,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(faPlus);
 library.add(faPaw);
@@ -46,15 +46,15 @@ library.add(faFeather);
 library.add(faHippo);
 library.add(faOtter);
 
-VueCore.component("font-awesome-icon", FontAwesomeIcon);
+VueCore.component('font-awesome-icon', FontAwesomeIcon);
 
 @Component
 export default class FAB extends Vue {
-  selecting = false;
+  public selecting = false;
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   position: fixed;
   bottom: 1rem;
@@ -69,61 +69,37 @@ button {
   border-radius: 50%;
   box-shadow: 5px 5px 5px lightgray;
   position: absolute;
-}
-
-button.main {
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: royalblue;
-  font-size: 2rem;
   color: whitesmoke;
-  bottom: 0;
-  right: 0;
-}
-
-button.main > div {
-  transition: 0.5s ease;
-}
-
-button.main > div.selecting {
-  transform: rotate(225deg);
-}
-
-button.item {
-  height: 3rem;
-  width: 3rem;
-  background-color: gray;
-  font-size: 1.5rem;
-  color: whitesmoke;
-  right: -4rem;
-  transition: 0.5s ease;
-}
-
-button.item.selecting {
-  transform: translateX(-4.5rem);
-}
-
-button.item:nth-last-of-type(1) {
-  bottom: 4rem;
-}
-
-button.item:nth-last-of-type(2) {
-  bottom: 7.5rem;
-  transition-delay: 0.1s;
-}
-
-button.item:nth-last-of-type(3) {
-  bottom: 11rem;
-  transition-delay: 0.2s;
-}
-
-button.item:nth-last-of-type(4) {
-  bottom: 14.5rem;
-  transition-delay: 0.3s;
-}
-
-button.item:nth-last-of-type(5) {
-  bottom: 18rem;
-  transition-delay: 0.4s;
+  &.main {
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: royalblue;
+    font-size: 2rem;
+    bottom: 0;
+    right: 0;
+    > div {
+      transition: 0.5s ease;
+      &.selecting {
+        transform: rotate(225deg);
+      }
+    }
+  }
+  &.item {
+    height: 3rem;
+    width: 3rem;
+    background-color: gray;
+    font-size: 1.5rem;
+    right: -4rem;
+    transition: 0.5s ease;
+    &.selecting {
+      transform: translateX(-4.5rem);
+    }
+    @for $i from 0 through 4 {
+      &:nth-last-of-type(#{$i + 1}) {
+        bottom: $i * 3.5 + 4rem;
+        transition-delay: $i * 0.1s;
+      }
+    }
+  }
 }
 </style>
