@@ -1,27 +1,46 @@
 <template>
-  <div class="toast" :class="[{in: show}]">Toasted!!</div>
+  <div class="toast" :class="[{show}]">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Loader extends Vue {
   @Prop()
   public show?: boolean;
+
+  public onClick() {
+    if (this.show) {
+      this.show = false;
+    }
+    this.show = true;
+  }
 }
 </script>
 
-<style scoped>
-@keyframes toast {
+<style lang="scss" scoped>
+@keyframes fadein {
+  from {
+    bottom: 0rem;
+    opacity: 0;
+  }
   to {
-    transform: translateY(-4rem);
+    bottom: 2rem;
+    opacity: 1;
   }
 }
 
-@keyframes toast-out {
+@keyframes fadeout {
+  from {
+    bottom: 2rem;
+    opacity: 1;
+  }
   to {
-    transform: translateY(4rem);
+    bottom: 0rem;
+    opacity: 0;
   }
 }
 
@@ -37,9 +56,8 @@ export default class Loader extends Vue {
   left: 1rem;
   bottom: -3rem;
   line-height: 3rem;
-}
-
-.in {
-  animation: toast 0.5s ease-out forwards;
+  &.show {
+    animation: fadein 0.5s forwards, fadeout 0.5s 2s forwards;
+  }
 }
 </style>

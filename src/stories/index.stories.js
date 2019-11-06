@@ -24,7 +24,7 @@ storiesOf('FAB', module).add('show items', () => ({
   template: '<FAB></FAB>'
 }))
 
-storiesOf('Toaster', module).add('appear on event', () => ({
+storiesOf('Toast', module).add('fade in-out', () => ({
   components: { Toaster },
   data() {
     return {
@@ -33,14 +33,13 @@ storiesOf('Toaster', module).add('appear on event', () => ({
   },
   methods: {
     toggleToast() {
-      console.log({ 'before toasted': this.toasted })
       this.toasted = !this.toasted
     }
   },
   template: `
   <div>
     <button @click="toggleToast">Show toast</button>
-    <toaster :show="toasted"></toaster>
+    <toaster :show="toasted">Disappear after few sec!</toaster>
   </div>
   `
 }))
