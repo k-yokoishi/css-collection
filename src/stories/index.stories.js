@@ -2,12 +2,14 @@
 import { storiesOf } from '@storybook/vue'
 // import { action } from '@storybook/addon-actions'
 // import { linkTo } from '@storybook/addon-links'
+import { withKnobs, text, boolean } from '@storybook/addon-knobs'
 
 // import MyButton from '../components/MyButton.vue'
 import BouncingLoader from '../components/BouncingLoader'
 import CircleSpinner from '../components/CircleSpinner'
 import Toaster from '../components/Toaster'
 import FAB from '../components/FAB'
+import CreditCard from '../components/CreditCard'
 
 storiesOf('Loader', module)
   .add('Bouncing', () => ({
@@ -42,6 +44,11 @@ storiesOf('Toast', module).add('fade in-out', () => ({
     <toaster :show="toasted">Disappear after few sec!</toaster>
   </div>
   `
+}))
+
+storiesOf('Credit Card', module).add('Credit Card', () => ({
+  components: { CreditCard },
+  template: '<credit-card :cardNum="cardNum" :reversed="reversed"></credit-card>'
 }))
 
 // storiesOf('Button', module)
