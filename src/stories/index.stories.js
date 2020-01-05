@@ -48,7 +48,7 @@ storiesOf('Toast', module).add('fade in-out', () => ({
 
 storiesOf('Credit Card', module).add('Credit Card', () => ({
   components: { CreditCard },
-  template: '<credit-card :cardNum="cardNum" :reversed="reversed"></credit-card>'
+  template: '<credit-card></credit-card>'
 }))
 
 // storiesOf('Button', module)

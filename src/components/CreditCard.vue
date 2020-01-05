@@ -75,8 +75,8 @@
           <label>
             Card Holders
             <input
-              v-on:focus="onFocus(FormType.CardHolders)"
-              v-on:blur="onBlur"
+              @focus="onFocus(FormType.CardHolders)"
+              @blur="onBlur"
               v-model="form.cardHolders"
             />
           </label>
@@ -162,7 +162,6 @@ export default class CreditCard extends Vue {
   get yearOption() {
     return Array.from(Array(10).keys())
       .map((v) => String(new Date().getFullYear() - 2000 + v))
-      .map((v) => v.padStart(2, '0'));
   }
 
   @Ref() public cardNumSection!: HTMLElement;
